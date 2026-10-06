@@ -10,9 +10,9 @@ class App {
         $url = $this->parseURL();
         
         //controller
-        if(file_exists('../app/controllers/' . $url[0] . '.php')){ //cek apakah file controller ada
-            $this->controller = $url[0]; //jika ada, maka controller diganti dengan controller yang dipanggil
-            unset($url[0]); //hapus index ke 0 dari array url
+        if(isset($url[0]) && file_exists('../app/controllers/'.$url[0].'.php')){
+$this->controller = $url[0];
+            unset($url[0]);
         }
 
         require_once '../app/controllers/' . $this->controller . '.php'; //memanggil file controller
