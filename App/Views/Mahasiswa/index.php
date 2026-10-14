@@ -1,6 +1,11 @@
 <div class="container mt-4">
     <div class="row">
-        <div class="col-6">
+        <div class="col-lg-6">
+            <?php Flasher::flash(); ?>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-6">
             <!-- Button trigger modal -->
             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#formModal">
                 Tambah Data Mahasiswa
@@ -9,9 +14,12 @@
             <h3>Daftar Mahasiswa</h3>
             <ul class="list-group">
                 <?php foreach($data['mhs'] as $mhs) : ?>
-                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                    <li class="list-group-item">
                         <?php echo $mhs['nama']; ?>
-                        <a href="<?php echo BASEURL; ?>/mahasiswa/detail/<?php echo $mhs['id']; ?>" class="badge badge-primary">
+                        <a href="<?php echo BASEURL; ?>/mahasiswa/hapus/<?php echo $mhs['id']; ?>" class="badge badge-danger float-right ml-1" onclick="return confirm('Yakin?');">
+                            hapus
+                        </a>
+                        <a href="<?php echo BASEURL; ?>/mahasiswa/detail/<?php echo $mhs['id']; ?>" class="badge badge-primary float-right ml-1">
                             detail
                         </a>
                     </li>
@@ -20,6 +28,7 @@
         </div>
     </div>
 </div>
+<!-- Modal -->
 <!-- Modal -->
 <div class="modal fade" id="formModal" tabindex="-1" role="dialog"
     aria-labelledby="judulModal" aria-hidden="true">
